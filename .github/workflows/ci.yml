@@ -18,11 +18,11 @@ jobs:
         with:
           dotnet-version: 9.0.x
       - name: Restore dependencies
-        run: dotnet restore tests/Module.Tests/Lab.csproj
+        run: dotnet restore tests/Module.Tests/Module.Tests.csproj
       - name: Build
-        run: dotnet build tests/Module.Tests/Lab.csproj --no-restore
+        run: dotnet build tests/Module.Tests/Module.Tests.csproj --no-restore
       - name: Test
-        run: dotnet test tests/Module.Tests/Lab.csproj --no-build --verbosity normal --logger "console;verbosity=detailed"
+        run: dotnet test tests/Module.Tests/Module.Tests.csproj --no-build --verbosity normal --logger "console;verbosity=detailed"
       # Опционально: Публикация результатов тестов
       - name: Publish Test Results
         uses: actions/upload-artifact@v3
