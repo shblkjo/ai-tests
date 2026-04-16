@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ai-version-1  # Принудительно проверяем ветку v1
+          ref: ai-version-1
       - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 9.0.x
@@ -24,7 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ai-version-2  # ⚠️ ВНИМАНИЕ: здесь должно быть v2, а не v1!
+          ref: ai-version-2
       - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 9.0.x
