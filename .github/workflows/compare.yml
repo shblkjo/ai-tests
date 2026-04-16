@@ -14,9 +14,9 @@ jobs:
       - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 9.0.x
-      - run: dotnet restore tests/Module.Tests/Lab.csproj
-      - run: dotnet build tests/Module.Tests/Lab.csproj --no-restore
-      - run: dotnet test tests/Module.Tests/Lab.csproj --no-build --verbosity normal
+      - run: dotnet restore tests/Module.Tests/Module.Tests.csproj
+      - run: dotnet build tests/Module.Tests/Module.Tests.csproj --no-restore
+      - run: dotnet test tests/Module.Tests/Module.Tests.csproj --no-build --verbosity normal
 
   test-ai-v2:
     name: Test AI Version 2
@@ -28,9 +28,9 @@ jobs:
       - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 9.0.x
-      - run: dotnet restore tests/Module.Tests/Lab.csproj
-      - run: dotnet build tests/Module.Tests/Lab.csproj --no-restore
-      - run: dotnet test tests/Module.Tests/Lab.csproj --no-build --verbosity normal
+      - run: dotnet restore tests/Module.Tests/Module.Tests.csproj
+      - run: dotnet build tests/Module.Tests/Module.Tests.csproj --no-restore
+      - run: dotnet test tests/Module.Tests/Module.Tests.csproj --no-build --verbosity normal
 
   test-ai-v3:
     name: Test AI Version 3
@@ -42,6 +42,6 @@ jobs:
       - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 9.0.x
-      - run: dotnet restore tests/Module.Tests/Lab.csproj
-      - run: dotnet build tests/Module.Tests/Lab.csproj --no-restore
-      - run: dotnet test tests/Module.Tests/Lab.csproj --no-build --verbosity normal
+      - run: dotnet restore tests/Module.Tests/Module.Tests.csproj
+      - run: dotnet build tests/Module.Tests/Module.Tests.csproj --no-restore
+      - run: dotnet test tests/Module.Tests/Module.Tests.csproj --no-build --verbosity normal
