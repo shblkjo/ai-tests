@@ -1,32 +1,32 @@
 name: .NET CI Pipeline (NUnit)
+
 on:
- push:
- branches: [ "main", "ai-version-1", "ai-version-2", "ai-version-3" ]
-pull_request:
- branches: [ "main" ]
-workflow_dispatch: # Добавлено для ручного запуска
+  push:
+    branches: [ "main", "ai-version-1", "ai-version-2", "ai-version-3" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch: # Добавлено для ручного запуска
 
 jobs:
- build-and-test:
-  runs-on: ubuntu-latest
-  steps:
-  - name: Checkout repository
-    uses: actions/checkout@v3
-  - name: Setup .NET
-    uses: actions/setup-dotnet@v3
-    with:
-     dotnet-version: 9.0.x
-  - name: Restore dependencies
-    run: dotnet restore
-  - name: Build
-    run: dotnet build --no-restore
-  - name: Test
-    run: dotnet test --no-build --verbosity normal --logger "console;verbosity=detailed"
-
-  # Опционально: Публикация результатов тестов
-  - name: Publish Test Results
-    uses: actions/upload-artifact@v3
-    if: always()
-    with:
-     name: nunit-test-results-${{ github.ref_name }}
-     path: '**/*.trx'
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 9.0.x
+      - name: Restore dependencies
+        run: dotnet restore tests/Module.Tests/Lab.csproj
+      - name: Build
+        run: dotnet build tests/Module.Tests/Lab.csproj --no-restore
+      - name: Test
+        run: dotnet test tests/Module.Tests/Lab.csproj --no-build --verbosity normal --logger "console;verbosity=detailed"
+      # Опционально: Публикация результатов тестов
+      - name: Publish Test Results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: nunit-test-results-${{ github.ref_name }}
+          path: '**/*.trx'
