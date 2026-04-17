@@ -1,17 +1,20 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using Lab.Interfaces;
+using System.Linq;
 
-namespace Module.Tests;
+namespace Lab.Tests;
 
-[TestFixture]
+[TestFixture(typeof(Lab.Implementations.GenCode1.TemperatureConverter), Category = "GenCode1")]
+[TestFixture(typeof(Lab.Implementations.GenCode2.TemperatureConverter), Category = "GenCode2")]
+[TestFixture(typeof(Lab.Implementations.GenCode3.TemperatureConverter), Category = "GenCode3")]
+
 public class TemperatureConverterTests
 {
-    private TemperatureConverter _converter;
+    private ITemperatureConverter _converter;
 
-    [SetUp]
-    public void SetUp()
+    public TemperatureConverterTests(Type type)
     {
-        _converter = new TemperatureConverter();
+        _converter = (ITemperatureConverter)Activator.CreateInstance(type);
     }
 
     // ---------- Тесты "чёрного ящика" (на основе спецификации) ----------
