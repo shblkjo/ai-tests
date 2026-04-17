@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-using Lab.Implementations;
+using Lab.Interfaces;
 
 namespace Module.Tests;
 
